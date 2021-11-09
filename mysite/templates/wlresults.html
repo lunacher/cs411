@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>result of stock searching</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Stock Id</th>
+        <th>Stock Name</th>
+        <th>Price</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Volume</th>
+        <th>Company</th>
+        <th>MarketId</th>
+    </tr>
+    {{ search_list }}
+    {% for record in search_list %}
+        <tr>
+            {% for x in record %}
+                <td>{{ x }}</td>
+            {% endfor %}
+                <td><a href="/watchlist_add/?id={{ record.0 }}"><button class="btn btn-primary">Add</button></a>
+                </td>
+        </tr>
+    {% endfor %}
+
+  </table>
+  
+</body>
+</html>

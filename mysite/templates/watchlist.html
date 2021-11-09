@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watchlist</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>StockId  </th>
+        <th>StockName  </th>
+        <th>Price  </th>
+        <th>High  </th>
+        <th>Low  </th>
+        <th>Volume  </th>
+        <th>Company  </th>
+        <th>MarketId  </th>
+        <th>Delete </th>
+    </tr>
+    {{ watchlist }}
+    {% for record in watchlist %}
+        <tr>
+            {% for x in record %}
+                <td>{{ x }}</td>
+            {% endfor %}
+            <td><a href="/watchlist_delete/?id={{ record.0 }}"><button class="btn btn-primary">Delete</button></a>
+            </td>
+        </tr>
+    {% endfor %}
+  </table>
+  <form method="get" action="/search_wl/">
+    {% csrf_token %}
+    <input type="search" name='wlstockid' placeholder="Type the stock ID you want to search " required>
+    <button type="submit">Search</button>
+  </form>
+            
+</body>
+</html>
